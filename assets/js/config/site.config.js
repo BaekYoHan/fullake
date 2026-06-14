@@ -12,6 +12,7 @@ const SITE_CONFIG = {
   ownerBio: '안녕하세요. 볼링을 좋아하는 주인장입니다.',
   ownerIntro: '볼링을 취미로 즐기며, 입문자와 동호인이 헷갈리기 쉬운 내용을 정리하는 것을 좋아합니다. 과장 없는 정보 전달을 원칙으로 이 사이트를 운영합니다.',
   email: 'johnsability@gmail.com',
+  adsenseClientId: 'ca-pub-3943299422462285',
   colors: {
     main: '#F8BBD9',
     mainDark: '#E891B5',
@@ -29,7 +30,7 @@ const SITE_CONFIG = {
     '입문자도 이해할 수 있는 표현을 우선합니다.',
     '검증되지 않은 통계나 과장된 표현은 사용하지 않습니다.',
     '글 내용은 운영 과정에서 순차적으로 점검·보완합니다.',
-    '광고나 제휴 없이 정보 전달 목적으로 운영합니다.',
+    '광고는 Google AdSense를 통해 제공됩니다.',
     '연락은 이메일을 통해서만 받습니다.'
   ],
   adminDemoPassword: 'fullake2026',

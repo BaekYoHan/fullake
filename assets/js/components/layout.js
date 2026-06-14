@@ -3,10 +3,23 @@
  */
 const Layout = {
   init(activeNav = '') {
+    this._injectAdsense();
     this._applyColors();
     this._renderHeader(activeNav);
     this._renderFooter();
     this._bindNavToggle();
+  },
+
+  _injectAdsense() {
+    if (document.querySelector('script[data-adsense]')) return;
+    const clientId = DataStore.getSettings().adsenseClientId;
+    if (!clientId) return;
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${clientId}`;
+    script.crossOrigin = 'anonymous';
+    script.setAttribute('data-adsense', 'true');
+    document.head.appendChild(script);
   },
 
   _applyColors() {
