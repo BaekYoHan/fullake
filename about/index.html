@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사이트 소개 | fullake.co.kr</title>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+  <header id="site-header"></header>
+  <main class="page-main container content-narrow" id="page-content">
+    <nav class="breadcrumb" aria-label="breadcrumb" id="breadcrumb"></nav>
+    <h1>사이트 소개</h1>
+    <p id="about-intro"></p>
+
+    <h2>다루는 주제</h2>
+    <p id="about-topic"></p>
+    <ul id="about-cats"></ul>
+
+    <h2>운영 목적</h2>
+    <p id="about-purpose"></p>
+
+    <h2>편집 원칙</h2>
+    <ul class="principles-list" id="about-principles"></ul>
+
+    <h2>운영자</h2>
+    <div id="about-editor"></div>
+
+    <div class="cta-section">
+      <h2>문의하기</h2>
+      <p>사이트 내용이나 제안 사항은 이메일로 보내 주세요.</p>
+      <a href="#" id="about-email" class="btn btn-primary"></a>
+    </div>
+  </main>
+  <footer id="site-footer"></footer>
+  <script src="../assets/js/config/site.config.js"></script>
+  <script src="../assets/js/data/categories.js"></script>
+  <script src="../assets/js/data/posts.js"></script>
+  <script src="../assets/js/data/columns.js"></script>
+  <script src="../assets/js/lib/utils.js"></script>
+  <script src="../assets/js/lib/storage.js"></script>
+  <script src="../assets/js/lib/seo.js"></script>
+  <script src="../assets/js/components/layout.js"></script>
+  <script>
+    Layout.init('about');
+    const s = DataStore.getSettings();
+    const cats = DataStore.getCategories();
+    SEO.setPageMeta({ title: '사이트 소개', description: `${s.siteName}의 운영 목적과 편집 원칙을 소개합니다.`, canonical: `${s.domain}/about/` });
+    document.getElementById('breadcrumb').innerHTML = Layout.breadcrumb([{ name: '사이트 소개', url: '' }]);
+    document.getElementById('about-intro').textContent = `${s.siteName}는 ${s.tagline}를 목표로 운영되는 ${s.topic} 정보 사이트입니다.`;
+    document.getElementById('about-topic').textContent = `이 사이트는 ${s.targetAudience}를 주요 독자로 하며, 아래와 같은 주제를 다룹니다.`;
+    document.getElementById('about-cats').innerHTML = cats.map(c => `<li><strong>${c.name}</strong> — ${c.description}</li>`).join('');
+    document.getElementById('about-purpose').textContent = `과장된 홍보나 클릭을 유도하는 제목 대신, 실제로 도움이 되는 정보를 정리하는 것이 목적입니다. 콘텐츠는 운영 과정에서 주기적으로 점검하고 업데이트합니다.`;
+    document.getElementById('about-principles').innerHTML = s.editPrinciples.map(p => `<li>${p}</li>`).join('');
+    document.getElementById('about-editor').innerHTML = Layout.editorBox();
+    const emailBtn = document.getElementById('about-email');
+    emailBtn.href = `mailto:${s.email}`;
+    emailBtn.textContent = s.email;
+  </script>
+</body>
+</html>

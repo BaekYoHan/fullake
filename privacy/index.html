@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>개인정보처리방침 | fullake.co.kr</title>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+  <header id="site-header"></header>
+  <main class="page-main container content-narrow legal-content" id="page-content">
+    <nav class="breadcrumb" aria-label="breadcrumb" id="breadcrumb"></nav>
+    <h1>개인정보처리방침</h1>
+    <p><strong>시행일:</strong> 2026년 1월 1일 &nbsp;|&nbsp; <strong>최종 수정:</strong> 2026년 6월 1일</p>
+
+    <p id="privacy-intro"></p>
+
+    <h2>1. 수집하는 개인정보 항목</h2>
+    <p>본 사이트는 정적 정보 제공 사이트로, 일반적인 열람 시 개인정보를 별도로 수집하지 않습니다. 다만 아래의 경우 최소한의 정보가 처리될 수 있습니다.</p>
+    <ul>
+      <li><strong>이메일 문의:</strong> 이용자가 자발적으로 이메일을 보낼 때, 이메일 주소·이름(기재 시)·문의 내용</li>
+      <li><strong>관리자 모드(CMS-lite):</strong> 브라우저 localStorage에 편집 데이터가 저장될 수 있음 (해당 기기·브라우저에 한함)</li>
+      <li><strong>서버 로그:</strong> 웹 호스팅 서비스 이용 시 접속 IP, 브라우저 정보 등이 호스팅 업체 정책에 따라 기록될 수 있음</li>
+    </ul>
+
+    <h2>2. 개인정보의 수집 및 이용 목적</h2>
+    <ul>
+      <li>문의에 대한 답변 및 소통</li>
+      <li>사이트 운영 및 콘텐츠 개선</li>
+      <li>서비스 안정성 확보 (서버 로그)</li>
+    </ul>
+
+    <h2>3. 개인정보의 보유 및 이용 기간</h2>
+    <p>이메일 문의 내용은 답변 완료 후 최대 1년간 보관 후 삭제합니다. 다만 관련 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관할 수 있습니다.</p>
+
+    <h2>4. 개인정보의 제3자 제공</h2>
+    <p>운영자는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만 법령에 의해 요구되는 경우는 예외로 합니다.</p>
+
+    <h2>5. 개인정보 처리의 위탁</h2>
+    <p>웹사이트 호스팅 및 이메일 서비스 이용 시, 해당 서비스 제공업체가 기술적 처리를 수행할 수 있습니다. 위탁 업체와의 계약 시 개인정보 보호 관련 조치를 확인합니다.</p>
+
+    <h2>6. 이용자의 권리</h2>
+    <p>이용자는 언제든지 자신의 개인정보에 대해 열람, 수정, 삭제를 요청할 수 있습니다. 이메일로 요청해 주시면 지체 없이 조치하겠습니다.</p>
+
+    <h2>7. 쿠키 및 로컬 저장소</h2>
+    <p>본 사이트는 광고 추적 쿠키를 사용하지 않습니다. 관리자 모드 이용 시 브라우저 localStorage에 편집 데이터가 저장될 수 있으며, 이는 해당 브라우저에서만 유지됩니다.</p>
+
+    <h2>8. 개인정보 보호책임자</h2>
+    <p>운영자: <span id="privacy-owner"></span><br>이메일: <a href="#" id="privacy-email"></a></p>
+
+    <h2>9. 방침의 변경</h2>
+    <p>본 방침이 변경되는 경우 사이트를 통해 공지합니다. 변경된 방침은 공지일로부터 효력이 발생합니다.</p>
+  </main>
+  <footer id="site-footer"></footer>
+  <script src="../assets/js/config/site.config.js"></script>
+  <script src="../assets/js/data/categories.js"></script>
+  <script src="../assets/js/data/posts.js"></script>
+  <script src="../assets/js/data/columns.js"></script>
+  <script src="../assets/js/lib/utils.js"></script>
+  <script src="../assets/js/lib/storage.js"></script>
+  <script src="../assets/js/lib/seo.js"></script>
+  <script src="../assets/js/components/layout.js"></script>
+  <script>
+    Layout.init('');
+    const s = DataStore.getSettings();
+    SEO.setPageMeta({ title: '개인정보처리방침', description: `${s.siteName} 개인정보처리방침`, canonical: `${s.domain}/privacy/` });
+    document.getElementById('breadcrumb').innerHTML = Layout.breadcrumb([{ name: '개인정보처리방침', url: '' }]);
+    document.getElementById('privacy-intro').textContent = `${s.siteName}(이하 "사이트")는 이용자의 개인정보를 중요하게 생각하며, 개인정보 보호법 등 관련 법령을 준수합니다.`;
+    document.getElementById('privacy-owner').innerHTML = `<a href="../author/index.html">${s.ownerName}</a>`;
+    const em = document.getElementById('privacy-email');
+    em.href = `mailto:${s.email}`; em.textContent = s.email;
+  </script>
+</body>
+</html>

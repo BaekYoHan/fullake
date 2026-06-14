@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사이트맵 | fullake.co.kr</title>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+  <header id="site-header"></header>
+  <main class="page-main container" id="page-content">
+    <nav class="breadcrumb" aria-label="breadcrumb" id="breadcrumb"></nav>
+    <h1>사이트맵</h1>
+    <p>fullake.co.kr의 전체 페이지 목록입니다.</p>
+    <div id="sitemap-content"></div>
+  </main>
+  <footer id="site-footer"></footer>
+  <script src="../assets/js/config/site.config.js"></script>
+  <script src="../assets/js/data/categories.js"></script>
+  <script src="../assets/js/data/posts.js"></script>
+  <script src="../assets/js/data/columns.js"></script>
+  <script src="../assets/js/lib/utils.js"></script>
+  <script src="../assets/js/lib/storage.js"></script>
+  <script src="../assets/js/lib/seo.js"></script>
+  <script src="../assets/js/components/layout.js"></script>
+  <script>
+    Layout.init('');
+    const s = DataStore.getSettings();
+    const b = '../';
+    SEO.setPageMeta({ title: '사이트맵', description: `${s.siteName} 전체 페이지 목록`, canonical: `${s.domain}/sitemap/` });
+    document.getElementById('breadcrumb').innerHTML = Layout.breadcrumb([{ name: '사이트맵', url: '' }]);
+
+    const cats = DataStore.getCategories();
+    const posts = DataStore.getPosts().filter(p => p.status === 'published');
+    const cols = DataStore.getColumns().filter(c => c.status === 'published');
+
+    document.getElementById('sitemap-content').innerHTML = `
+      <div class="sitemap-group">
+        <h2>주요 페이지</h2>
+        <ul class="sitemap-list">
+          <li><a href="${b}index.html">홈</a></li>
+          <li><a href="${b}about/index.html">사이트 소개</a></li>
+          <li><a href="${b}author/index.html">운영자 소개</a></li>
+          <li><a href="${b}contact/index.html">문의하기</a></li>
+          <li><a href="${b}categories/index.html">카테고리</a></li>
+          <li><a href="${b}columns/index.html">운영자 칼럼</a></li>
+          <li><a href="${b}privacy/index.html">개인정보처리방침</a></li>
+          <li><a href="${b}terms/index.html">이용약관</a></li>
+          <li><a href="${b}disclaimer/index.html">면책고지</a></li>
+        </ul>
+      </div>
+      <div class="sitemap-group">
+        <h2>카테고리</h2>
+        <ul class="sitemap-list">
+          ${cats.map(c => `<li><a href="${b}categories/${c.slug}/index.html">${c.name}</a></li>`).join('')}
+        </ul>
+      </div>
+      <div class="sitemap-group">
+        <h2>글 (${posts.length}개)</h2>
+        <ul class="sitemap-list">
+          ${posts.map(p => `<li><a href="${b}posts/${p.slug}/index.html">${p.title}</a></li>`).join('')}
+        </ul>
+      </div>
+      <div class="sitemap-group">
+        <h2>칼럼 (${cols.length}개)</h2>
+        <ul class="sitemap-list">
+          ${cols.map(c => `<li><a href="${b}columns/${c.slug}/index.html">${c.title}</a></li>`).join('')}
+        </ul>
+      </div>
+    `;
+  </script>
+</body>
+</html>

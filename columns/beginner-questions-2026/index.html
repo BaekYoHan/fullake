@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>칼럼 로딩중...</title>
+  <link rel="icon" href="../../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+  <header id="site-header"></header>
+  <main class="page-main container" id="page-content"></main>
+  <footer id="site-footer"></footer>
+  <script src="../../assets/js/config/site.config.js"></script>
+  <script src="../../assets/js/data/categories.js"></script>
+  <script src="../../assets/js/data/posts.js"></script>
+  <script src="../../assets/js/data/columns.js"></script>
+  <script src="../../assets/js/lib/utils.js"></script>
+  <script src="../../assets/js/lib/storage.js"></script>
+  <script src="../../assets/js/lib/seo.js"></script>
+  <script src="../../assets/js/components/layout.js"></script>
+  <script src="../../assets/js/pages/render.js"></script>
+  <script>
+    const slug = window.location.pathname.match(/\/columns\/([^/]+)/)?.[1];
+    Layout.init('columns');
+    if (slug) Pages.renderColumn(slug);
+  </script>
+</body>
+</html>
+
